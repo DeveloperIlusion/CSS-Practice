@@ -1,0 +1,219 @@
+/* Reset de estilos padrão */
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Estilo do corpo da página */
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #212121;
+}
+/* Estilo do cubo */
+.cube
+{
+    position: absolute;
+    width: var(--cubeWidth);
+    height: var(--cubeHeight);
+    transform-style: preserve-3d;
+    transform: rotateX(-30deg);
+    animation: rotate 4s linear infinite;
+}
+/* Animação que faz o cubo rodar em seu próprio eixo */
+@keyframes rotate
+{
+    0%
+    {
+        transform: rotateX(-30deg) rotateY(0deg);
+    }
+    100%
+    {
+        transform: rotateX(-30deg) rotateY(360deg);
+    }
+}
+/* Container das faces do cubo */
+.cube-sides-container
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+/* Estilo das faces do cubo */
+.cube-side
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Cria o efeito de ser um cubo ao girar os lados do triângulo */
+    transform: rotateY(calc(90deg * var(--i))) translateZ(calc(var(--cubeWidth) / 2));
+}
+/* Estilo da face superior do cubo */
+.top
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--cubeWidth);
+    height: var(--cubeHeight);
+    /* Define a posição do topo/tampa do cubo. */
+    transform: rotateX(90deg) translateZ(calc(var(--cubeWidth) / 2));
+}
+/* Efeito de desfoque na face superior do cubo */
+.top::before
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--cubeWidth);
+    height: var(--cubeHeight);
+    /* Calcula a distância entre o cubo e o reflexo no chão. */
+    transform: translateZ(calc(0px - var(--cubeWidth) - (var(--cubeWidth) / 4)));
+    filter: blur(20px);
+}
+
+.text-block-config
+{
+    color: white;
+    width: var(--cubeWidth);
+    height: var(--cubeHeight);
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    font-size: x-large;
+    margin-top: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Daqui pra baixo estou apenas definindo as cores de cada parte dos cubos. */
+
+/*==================================================================*/
+/*                             Cubo Azul                            */
+/*==================================================================*/
+
+.blue-cube
+{
+    right: 65%;
+    bottom: 55%;
+}
+.blue-cube .cube-side
+{
+    background: linear-gradient(#6ef5fa, rgb(255, 255, 255), #00c8ec);
+}
+.blue-cube .top
+{
+    background-color: #6ef5fa;
+}
+.blue-cube .top::before
+{
+    background: #00c8ec;
+    box-shadow: 
+        0 0 120px rgba(0, 200, 255, 0.2),
+        0 0 200px rgba(0, 200, 255, 0.4),
+        0 0 300px rgba(0, 200, 255, 0.6),
+        0 0 400px rgba(0, 200, 255, 0.8),
+        0 0 500px rgba(0, 200, 255, 1);
+}
+
+/*==================================================================*/
+/*                          Cubo Vermelho                           */
+/*==================================================================*/
+
+.red-cube
+{
+    left: 70%;
+    bottom: 60%;
+}
+.red-cube .cube-side
+{
+    background: linear-gradient(#fa6e6e, #ec0000);
+}
+.red-cube .top
+{
+    background-color: #fa6e6e;
+}
+.red-cube .top::before
+{
+    background: #d30303;
+    box-shadow: 
+        0 0 120px rgba(255, 0, 0, 0.2),
+        0 0 200px rgba(255, 0, 0, 0.4),
+        0 0 300px rgba(255, 0, 0, 0.6),
+        0 0 400px rgba(255, 0, 0, 0.8),
+        0 0 500px rgba(255, 0, 0, 1);
+}
+
+/*==================================================================*/
+/*                           Cubo Amarelo                           */
+/*==================================================================*/
+
+.yellow-cube
+{
+    right: 75%;
+    top: 70%;
+}
+.yellow-cube .cube-side
+{
+    background: linear-gradient(#f8fa6e, #ece800);
+}
+.yellow-cube .top
+{
+    background-color: #f8fa6e;
+}
+.yellow-cube .top::before
+{
+    background: #ece800;
+    box-shadow: 
+        0 0 120px rgba(255, 255, 0, 0.2),
+        0 0 200px rgba(255, 255, 0, 0.4),
+        0 0 300px rgba(255, 255, 0, 0.6),
+        0 0 400px rgba(255, 255, 0, 0.8),
+        0 0 500px rgba(255, 255, 0, 1);
+}
+
+/*==================================================================*/
+/*                            Cubo Verde                            */
+/*==================================================================*/
+
+.green-cube
+{
+    top: 50%;
+    left: 50%;
+}
+.green-cube .cube-side
+{
+    background: linear-gradient(#22222200, #2bf82b);
+    border: solid 5px #0142011c;
+}
+.green-cube .top
+{
+    background-color: #252525ef;
+    border: solid 5px #00ff003a;
+    box-shadow: 
+        0 0 10px rgba(15, 156, 15, 0.6),
+        0 0 12px rgb(0, 114, 0);
+}
+.green-cube .top::before
+{
+    background: #00000000;
+    box-shadow: 
+        0 0 120px rgba(0, 255, 0, 0.2),
+        0 0 200px rgba(0, 255, 0, 0.4),
+        0 0 300px rgba(0, 255, 0, 0.6),
+        0 0 400px rgba(0, 255, 0, 0.8),
+        0 0 500px rgba(0, 255, 0, 1);
+        filter: blur(20px);
+}
